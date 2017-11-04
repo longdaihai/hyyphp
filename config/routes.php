@@ -3,21 +3,21 @@
  * @Author: LongDH
  * @Date:   2017-11-04 18:42:39
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-04 19:05:21
+ * @Last Modified time: 2017-11-04 20:54:24
  */
-use NoahBuscher\Macaw\Macaw;
+use hyyphp\hyyphp_core\core;
 
 // 默认控制器
-Macaw::get('', 'IndexController@home');
+Route::get('', 'IndexController@home');
 
-Macaw::get('fuck', function() {
+Route::get('fuck', function() {
   echo "成功！";
 });
 
-Macaw::get('(:all)', function($fu) {
+Route::get('(:all)', function($fu) {
   echo '未匹配到路由<br>'.$fu;
 });
 
 
 
-Macaw::dispatch();
+Route::dispatch();
