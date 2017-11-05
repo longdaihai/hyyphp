@@ -1,5 +1,6 @@
 composer.phar
 composer.lock
+app/runtime/*
 /vendor/
 .DS_Store
 *.log

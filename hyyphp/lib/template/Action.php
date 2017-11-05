@@ -3,18 +3,20 @@
  * @Author: LongDH
  * @Date:   2017-11-05 18:39:37
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 20:47:39
+ * @Last Modified time: 2017-11-05 21:57:53
  */
 
 namespace hyyphp\lib\template;
 
 class Action {
+     //模板编译文件目录
+     public $runtime_dir = RUNTIME_PATH;
      //模板文件
      public $template_dir = RUNTIME_PATH . 'templates';
      //编译文件
      public $compile_dir = RUNTIME_PATH . 'templates_c';
-     //缓存文件
-     public $cache_dir = RUNTIME_PATH;
+     //编译文件
+     public $cache_dir = RUNTIME_PATH . 'cache';
      //模板变量
      public $tpl_var = [];
      //是否开启缓存
@@ -53,16 +55,15 @@ class Action {
 
      //文件编译
      public function display($file) {
-          $this->assign('aa', 'bb');
-          p($this->tpl_var);
           //模板文件地址
+          p($this->tpl_var);
           $tpl_file  = APP_PATH . 'view/'.$file.'.html';
           $tpl_file = str_replace('\\', '/', $tpl_file);
 
           if (!file_exists($tpl_file)) {
                exit($tpl_file . ' 模板文件不存在！');
           }
-          //编译文件''
+          //编译文件
           $parse_file = $this->compile_dir.'/'.md5($file).'.php';
 
           //只有当编译文件不存在或者是模板文件被修改过了
@@ -74,8 +75,11 @@ class Action {
 
           //开启了缓存才加载缓存文件，否则直接加载编译文件
           if ($this->caching) {
+               if (!file_exists($this->cache_dir)) {
+                    mkdir($this->cache_dir, 0777);
+               }
                //缓存文件
-               $cache_file = $this->cache_dir.'/'.md5($file).$file.'.html';
+               $cache_file = $this->cache_dir.'/'.md5($file).'.html';
                //只有当缓存文件不存在，或者编译文件已被修改过
                //重新生成缓存文件
                if (!file_exists($cache_file) || filemtime($cache_file) < filemtime($parse_file)) {
