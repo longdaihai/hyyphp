@@ -3,18 +3,23 @@
  * @Author: LongDH
  * @Date:   2017-11-04 18:58:03
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 05:20:14
+ * @Last Modified time: 2017-11-05 19:38:25
  */
 namespace app\controller;
 
-use hyy\Controller;
+use app\model\DemoModel;
 
-class IndexController extends Controller{
+class IndexController extends BaseController{
      public function index() {
-          echo "<h1>控制器成功！</h1>";
+          $demo = new DemoModel();
+          $demo->query("SELECT * FROM test");
+          $ret = $demo->exec("SELECT * FROM test");
+          // p($ret);
+          $this->assign('hyy', 'www.haiyunyi.cn');
+          $this->fetch('index/index');
      }
 
      public function demo() {
-          echo '';
+          $this->fetch();
      }
 }

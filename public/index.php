@@ -3,12 +3,16 @@
  * @Author: LongDH
  * @Date:   2017-11-04 18:41:17
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 04:15:50
+ * @Last Modified time: 2017-11-05 17:07:03
  */
 
+// 项目目录
 define('APP_PATH', __DIR__ . '/../app/');
 
+// 项目模块
 define('MODULE', 'app');
 
+define('DEBUG', true);
+
 // 引入核心框架文件
-require '../hyyphp/hyy.php';
+require __DIR__ . '/../hyyphp/start.php';
