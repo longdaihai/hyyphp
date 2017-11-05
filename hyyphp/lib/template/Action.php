@@ -3,7 +3,7 @@
  * @Author: LongDH
  * @Date:   2017-11-05 18:39:37
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 21:57:53
+ * @Last Modified time: 2017-11-05 23:02:03
  */
 
 namespace hyyphp\lib\template;
@@ -56,7 +56,6 @@ class Action {
      //文件编译
      public function display($file) {
           //模板文件地址
-          p($this->tpl_var);
           $tpl_file  = APP_PATH . 'view/'.$file.'.html';
           $tpl_file = str_replace('\\', '/', $tpl_file);
 

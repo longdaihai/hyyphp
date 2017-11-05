@@ -1,9 +1,9 @@
 <?php
 
 class App {
-    protected static $controller = 'Index'; //默认控制器
-    protected static $method     = 'index'; //默认方法
-    protected static $pams       = array(); //其他参数
+    protected static $controller; //默认控制器
+    protected static $method;     //默认方法
+    protected static $pams     = array();   //其他参数
     protected static $classMap = array();   // 已加载的类
 
     /**
@@ -12,7 +12,6 @@ class App {
      */
     public static function run() {
         self::parseUrl();
-
         //得到控制器的路径
         $con_dir = APP_PATH . 'controller/' . self::$controller . 'Controller'.EXT;
 
@@ -32,7 +31,6 @@ class App {
         } else {
             throw new Exception(self::$method.' 方法不存在！');
         }
-
     }
 
     /**
@@ -46,7 +44,7 @@ class App {
             // 过滤?之后的参数
             $path = preg_replace("/\?.*/", "", $path);
             $url = explode('/', trim($path, '/'));
-            // p($url);
+
             //得到控制器名称
             if (isset($url[0])) {
                 self::$controller = ucfirst($url[0]);
@@ -63,10 +61,11 @@ class App {
             if (isset($url)) {
                 self::$pams = array_values($url);
             }
+        }else {
+            self::$controller = \hyyphp\lib\config::get('default_controller');
+            self::$method = \hyyphp\lib\config::get('default_function');
         }
     }
-
-
 
     /**
      * 自动加载类方法
