@@ -47,7 +47,7 @@ class App {
 
             //得到控制器名称
             if (isset($url[0])) {
-                self::$controller = ucfirst($url[0]);
+                self::$controller = ucfirst($url[0]); //首字母大写
                 unset($url[0]);
             }
 

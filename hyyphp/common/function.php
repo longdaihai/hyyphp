@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-04 21:18:46
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 22:48:29
+ * @Last Modified time: 2017-11-05 23:28:11
  */
 
 function demo() {
@@ -49,5 +49,9 @@ function p($var, $echo = true, $label = null, $flags = ENT_SUBSTITUTE) {
  * @return array
  */
 function config($name=null, $file='config') {
-     return \hyyphp\lib\Config::get($name, $file);
+     if($name==null) {
+          return \hyyphp\lib\Config::getAll($file);
+     }else {
+          return \hyyphp\lib\Config::get($name, $file);
+     }
 }
