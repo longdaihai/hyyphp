@@ -8,5 +8,7 @@
 </head>
 <body>
      <h1>index/index的视图页面！</h1>
+     <h2><?php echo $this->tpl_var["hyy"]?></h2>
+     <h3>test22</h3>
 </body>
 </html>

@@ -3,7 +3,7 @@
  * @Author: LongDH
  * @Date:   2017-11-05 18:39:37
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 19:41:34
+ * @Last Modified time: 2017-11-05 20:47:39
  */
 
 namespace hyyphp\lib\template;
@@ -16,7 +16,7 @@ class Action {
      //缓存文件
      public $cache_dir = RUNTIME_PATH;
      //模板变量
-     public $_tpl_var = array();
+     public $tpl_var = [];
      //是否开启缓存
      public $caching = false;
 
@@ -25,7 +25,6 @@ class Action {
      }
 
      public function __construct() {
-
           $this->checkDir();
      }
 
@@ -47,16 +46,15 @@ class Action {
      }
 
      //模板变量注入方法
-     public function assign($tpl_var, $var = null) {
-          if (isset($tpl_var) && !empty($tpl_var)) {
-               $this->_tpl_var[$tpl_var] = $var;
-          } else {
-               exit('模板变量名没有设置好');
-          }
+     public function assign($tpl_var, $var) {
+          // echo $tpl_var; die();
+          $this->tpl_var[$tpl_var] = $var;
      }
 
      //文件编译
      public function display($file) {
+          $this->assign('aa', 'bb');
+          p($this->tpl_var);
           //模板文件地址
           $tpl_file  = APP_PATH . 'view/'.$file.'.html';
           $tpl_file = str_replace('\\', '/', $tpl_file);

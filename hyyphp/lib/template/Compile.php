@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-05 18:35:31
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 18:56:01
+ * @Last Modified time: 2017-11-05 20:12:44
  */
 namespace hyyphp\lib\template;
 
@@ -20,7 +20,7 @@ class Compile {
      public function parseVar() {
           $pattern = '/\{\$([\w\d]+)\}/';
           if (preg_match($pattern, $this->content)) {
-               $this->content = preg_replace($pattern, '<?php echo \$this->_tpl_var["$1"]?>', $this->content);
+               $this->content = preg_replace($pattern, '<?php echo \$this->tpl_var["$1"]?>', $this->content);
           }
      }
 
