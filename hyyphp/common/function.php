@@ -4,43 +4,8 @@
  * @Author: LongDH
  * @Date:   2017-11-04 21:18:46
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-05 23:28:11
+ * @Last Modified time: 2017-11-07 17:22:22
  */
-
-function demo() {
-     echo '成功啦！';
-}
-
-/**
- * 浏览器友好的变量输出
- * @param mixed         $var 变量
- * @param boolean       $echo 是否输出 默认为true 如果为false 则返回输出字符串
- * @param string        $label 标签 默认为空
- * @param integer       $flags htmlspecialchars flags
- * @return void|string
- */
-function p($var, $echo = true, $label = null, $flags = ENT_SUBSTITUTE) {
-     $label = (null === $label) ? '' : rtrim($label) . ':';
-     ob_start();
-     var_dump($var);
-     $output = ob_get_clean();
-     $output = preg_replace('/\]\=\>\n(\s+)/m', '] => ', $output);
-     if (IS_CLI) {
-            $output = PHP_EOL . $label . $output . PHP_EOL;
-     } else {
-          if (!extension_loaded('xdebug')) {
-               $output = htmlspecialchars($output, $flags);
-          }
-          $output = '<pre>' . $label . $output . '</pre>';
-     }
-     if ($echo) {
-          echo($output);
-          return;
-     } else {
-          return $output;
-     }
-}
-
 
 /**
  * [config 获取配置信息助手函数 默认config]
@@ -53,5 +18,94 @@ function config($name=null, $file='config') {
           return \hyyphp\lib\Config::getAll($file);
      }else {
           return \hyyphp\lib\Config::get($name, $file);
+     }
+}
+
+
+function writeLog($filename, $msg, $type='error') {
+     $log = new \hyyphp\lib\Log();
+     $log->writeLog($filename, $msg, $type);
+}
+
+/**
+ * 发起GET请求
+ *
+ * @param string $url
+ * @return string content
+ */
+function http_get($url, $timeOut = 5, $connectTimeOut = 5) {
+     $oCurl = curl_init ();
+     if (stripos ( $url, "http://" ) !== FALSE || stripos ( $url, "https://" ) !== FALSE) {
+          curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYPEER, FALSE );
+          curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYHOST, FALSE );
+     }
+     curl_setopt($oCurl, CURLOPT_URL, $url );
+     curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
+     curl_setopt($oCurl, CURLOPT_TIMEOUT, $timeOut);
+     curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $connectTimeOut);
+     $sContent = curl_exec ( $oCurl );
+     $aStatus = curl_getinfo ( $oCurl );
+      $error = curl_error( $oCurl );
+     curl_close ( $oCurl );
+     if (intval ( $aStatus ["http_code"] ) == 200) {
+          return array(
+                    'status' => true,
+                    'content' => $sContent,
+                    'code' => $aStatus ["http_code"],
+          );
+     } else {
+          return array(
+                    'status' => false,
+                    'content' => json_encode(array("error" => $error, "url" => $url)),
+                    'code' => $aStatus ["http_code"],
+          );
+     }
+}
+
+/**
+ * 发起POST请求
+ *
+ * @param string $url
+ * @param array $param
+ * @return string content
+ */
+function http_post($url, $param, $timeOut = 5, $connectTimeOut = 5) {
+     $oCurl = curl_init ();
+     if (stripos ( $url, "http://" ) !== FALSE || stripos ( $url, "https://" ) !== FALSE) {
+          curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYPEER, FALSE );
+          curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYHOST, false );
+     }
+     if (is_string ( $param )) {
+          $strPOST = $param;
+     } else {
+          $aPOST = array ();
+          foreach ( $param as $key => $val ) {
+               $aPOST [] = $key . "=" . urlencode ( $val );
+          }
+          $strPOST = join ( "&", $aPOST );
+     }
+     curl_setopt($oCurl, CURLOPT_URL, $url );
+     curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
+     curl_setopt($oCurl, CURLOPT_POST, true );
+     curl_setopt($oCurl, CURLOPT_FOLLOWLOCATION, true);
+     curl_setopt($oCurl, CURLOPT_POSTFIELDS, $strPOST );
+     curl_setopt($oCurl, CURLOPT_TIMEOUT, $timeOut);
+     curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $connectTimeOut);
+     $sContent = curl_exec ($oCurl );
+     $aStatus = curl_getinfo ($oCurl );
+     $error = curl_error($oCurl );
+     curl_close ($oCurl );
+     if (intval ($aStatus ["http_code"] ) == 200) {
+          return array(
+                    'status' => true,
+                    'content' => $sContent,
+                    'code' => $aStatus ["http_code"],
+          );
+     } else {
+          return array(
+                    'status' => false,
+                    'content' => json_encode(array("error" => $error, "url" => $url)),
+                    'code' => $aStatus ["http_code"],
+          );
      }
 }

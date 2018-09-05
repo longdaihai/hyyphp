@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-05 17:27:03
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-06 00:04:23
+ * @Last Modified time: 2017-11-06 00:11:40
  */
 namespace hyyphp\lib;
 
@@ -16,12 +16,13 @@ class Model extends \PDO {
       */
      public function __construct(){
           $config = Config::getAll('db');
-          $dsn = "mysql:dbname={$config['DB_NAME']};host={$config['DB_HOST']}";
+
           $username = $config['DB_USER'];
           $password = $config['DB_PWD'];
+          $port     = $config['DB_PORT'];
           $charset = $config['DB_CHARSET'];
           $opts = [PDO::MYSQL_ATTR_INIT_COMMAND => 'set names '.$charset];
-
+          $dsn = "mysql:dbname={$config['DB_NAME']};host={$config['DB_HOST']};port={$port}";
           try{
                parent::__construct($dsn, $username, $password, $opts);
           }catch (\PDOException $e) {

@@ -1,0 +1,23 @@
+{
+     "name": "hyyphp/hyyphp_core",
+     "description": "An open source free and simple PHP framework.",
+     "license": "MIT",
+     "homepage": "https://github.com/longdaihai/hyyphp",
+     "keywords": [
+          "php-router",
+          "php"
+     ],
+     "authors": [
+          {
+               "name": "LongDaihai",
+               "email": "164897033@qq.com",
+               "homepage": "http://www.haiyunyi.cn/"
+          }
+     ],
+     "require": {
+          "php": ">=5.6",
+          "filp/whoops": "*",
+          "symfony/var-dumper": "*",
+          "monolog/monolog": "*"
+     }
+}

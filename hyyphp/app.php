@@ -31,6 +31,9 @@ class App {
         } else {
             throw new Exception(self::$method.' 方法不存在！');
         }
+        define('CONTROLLER_NAME', self::$controller);
+        define('FUNCTION_NAME', self::$controller);
+
     }
 
     /**
@@ -55,6 +58,8 @@ class App {
             if (isset($url[1])) {
                 self::$method = $url[1];
                 unset($url[1]);
+            }else {
+                 self::$method = \hyyphp\lib\config::get('default_function');
             }
 
             //判断是否还其他的参数
