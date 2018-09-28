@@ -15,7 +15,7 @@
  * ------------------------------------------------------
  */
 define('DS', DIRECTORY_SEPARATOR);
-define('HYYPHP_VERSION', '0.0.1Beat');
+define('HYYPHP_VERSION', '0.0.1-Beat');
 define('HYYPHP_START_TIME', microtime(true));
 define('HYYPHP_START_MEM', memory_get_usage());
 define('EXT', '.php');
