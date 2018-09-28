@@ -15,9 +15,13 @@
           }
      ],
      "require": {
-          "php": ">=5.6",
-          "filp/whoops": "*",
-          "symfony/var-dumper": "*",
+          "php": ">=5.4",
           "monolog/monolog": "*"
+     },
+     "repositories": {
+         "packagist": {
+             "type": "composer",
+             "url": "https://packagist.phpcomposer.com"
+         }
      }
 }

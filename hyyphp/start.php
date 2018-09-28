@@ -48,7 +48,7 @@ $autoloadPath = VENDOR_PATH . 'autoload.php';
 if(file_exists($autoloadPath)){
      require_once $autoloadPath;
 }else {
-     die('请使用Composer执行composer update！');
+     die('请使用Composer执行 composer update');
 }
 
 
@@ -73,9 +73,7 @@ require_once 'app.php';
  */
 if(DEBUG) {
      ini_set('display_error', 'On');
-     $whoops = new \Whoops\Run;
-     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-     $whoops->register();
+
 }else {
      ini_set('display_error', 'Off');
 }

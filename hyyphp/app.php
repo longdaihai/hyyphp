@@ -44,6 +44,7 @@ class App {
         if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '/'){
             // 解析 /index/index
             $path = $_SERVER['REQUEST_URI'];
+
             // 过滤?之后的参数
             $path = preg_replace("/\?.*/", "", $path);
             $url = explode('/', trim($path, '/'));
@@ -59,7 +60,7 @@ class App {
                 self::$method = $url[1];
                 unset($url[1]);
             }else {
-                 self::$method = \hyyphp\lib\config::get('default_function');
+                 self::$method = \hyyphp\lib\Config::get('default_function');
             }
 
             //判断是否还其他的参数
@@ -67,8 +68,8 @@ class App {
                 self::$pams = array_values($url);
             }
         }else {
-            self::$controller = \hyyphp\lib\config::get('default_controller');
-            self::$method = \hyyphp\lib\config::get('default_function');
+            self::$controller = \hyyphp\lib\Config::get('default_controller');
+            self::$method = \hyyphp\lib\Config::get('default_function');
         }
     }
 

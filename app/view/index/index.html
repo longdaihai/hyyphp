@@ -7,9 +7,15 @@
      <link rel="stylesheet" href="">
 </head>
 <body>
-     <h1>index/index的视图页面！</h1>
-     <h2>{$hyy}</h2>
-     <h3>success</h3>
+     <h1>index的视图页面！</h1>
+     <h2>{$name}</h2>
+     {foreach $hyy(key,val)}
+        <p>{@val['name']}</p>
+
+     {/foreach}
+     <h3>qq</h3>
+
+     <p>{php} echo 1; {/php}</p>
 
 </body>
 </html>

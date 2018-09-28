@@ -3,14 +3,14 @@
  * @Author: LongDH
  * @Date:   2017-11-06 16:47:13
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-06 17:26:09
+ * @Last Modified time: 2018-09-28 20:10:20
  */
 namespace hyyphp\lib;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-class log {
+class Log {
 
      public  $obj;
      public  $filename;
