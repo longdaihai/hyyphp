@@ -2,11 +2,11 @@
 // +----------------------------------------------------------------------
 // | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2017~2018 http://HYYPHPphp.cn All rights reserved.
+// | Copyright (c) 2017~2018 http://www.haiyunyi.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: LongDaihai <164897033@qq.com>
+// | Author: HanSheng <164897033@qq.com>
 // +----------------------------------------------------------------------
 
 /*
@@ -27,7 +27,7 @@ defined('MODULE') or define('MODULE', '/../app' . DS); //项目文件目录
 defined('ROOT_PATH') or define('ROOT_PATH', dirname(realpath(APP_PATH)) . DS);
 defined('EXTEND_PATH') or define('EXTEND_PATH', ROOT_PATH . 'extend' . DS);
 defined('VENDOR_PATH') or define('VENDOR_PATH', ROOT_PATH . 'vendor' . DS);
-defined('RUNTIME_PATH') or define('RUNTIME_PATH', APP_PATH . 'runtime' . DS);
+defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);
 defined('LOG_PATH') or define('LOG_PATH', ROOT_PATH . 'logs' . DS);
 defined('CACHE_PATH') or define('CACHE_PATH', RUNTIME_PATH . 'cache' . DS);
 defined('CONF_PATH') or define('CONF_PATH', ROOT_PATH . 'config' . DS); // 配置文件目录
@@ -47,8 +47,6 @@ define('IS_WIN', strpos(PHP_OS, 'WIN') !== false);
 $autoloadPath = VENDOR_PATH . 'autoload.php';
 if(file_exists($autoloadPath)){
      require_once $autoloadPath;
-}else {
-     die('请使用Composer执行 composer update');
 }
 
 
