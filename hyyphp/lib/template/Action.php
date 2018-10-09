@@ -36,15 +36,15 @@ class Action {
      //检查目录是否建好
      private function checkDir() {
           if (!file_exists($this->cache_dir)) {
-               mkdir($this->cache_dir, 0777);
-               chmod($this->cache_dir, 0777);
+               @mkdir($this->cache_dir, 0777);
+               @chmod($this->cache_dir, 0777);
           }
           if (!file_exists($this->template_dir)) {
-               mkdir($this->template_dir, 0777);
+               @mkdir($this->template_dir, 0777);
                // exit('模板文件目录templates不存在！请手动创建');
           }
           if (!file_exists($this->compile_dir)) {
-               mkdir($this->compile_dir, 0777);
+               @mkdir($this->compile_dir, 0777);
                // exit('编译文件目录templates_c不存在！请手工创建！');
           }
 

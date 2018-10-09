@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-04 21:18:46
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-07 17:22:22
+ * @Last Modified time: 2018-10-09 23:20:32
  */
 
 /**
@@ -20,7 +20,6 @@ function config($name=null, $file='config') {
           return \hyyphp\lib\Config::get($name, $file);
      }
 }
-
 
 function writeLog($filename, $msg, $type='error') {
      $log = new \hyyphp\lib\Log();

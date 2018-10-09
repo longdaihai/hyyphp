@@ -23,7 +23,6 @@ class Compile {
         //调用普通变量解析器
         $this->parseVar();
         $this->parseForeach();
-        $this->patternPHP();
 
         //编译完成后，生成编译文件
         if (!file_put_contents($parse_file, $this->content)) {
@@ -39,22 +38,8 @@ class Compile {
         }
     }
 
-    // 普通php解析
-    private function patternPHP() {
-        $patternPHP = '/\{php\}/';
-        $patternEnd = '/\{\/php\}/';
-        if(preg_match($patternPHP, $this->content)) {
-            if(preg_match($patternEnd, $this->content)) {
-                $this->content = preg_replace($patternPHP, '<?php', $this->content);
-                $this->content = preg_replace($patternEnd, '?>', $this->content);
-            }else {
-                exit('没有结束标签！');
-            }
-        }
-    }
-
     // foreach
-    public function parseForeach() {
+    private function parseForeach() {
         $pattForeach = '/\{foreach\s+\$([\w]+)\(([\w]+),([\w]+)\)\}/';
         $pattEnd = '/\{\/foreach\}/';
         $pattVal = '/\{\@([\w]+)\}/';
@@ -73,11 +58,15 @@ class Compile {
                 exit('Error:没有{/foreach}结束标签。');
             }
         }
-
-
-
     }
 
+    //if
+    private function parseIf() {
+        $pattIf = '/\{if(([\w]+))\}/';
+        if(preg_match($pattIf, $this->content)) {
+            exit('找到if开始');
+        }
+    }
 
 
 }
