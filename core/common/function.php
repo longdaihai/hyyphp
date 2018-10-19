@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-04 21:18:46
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-09 23:20:32
+ * @Last Modified time: 2018-10-19 16:31:03
  */
 
 /**
@@ -15,14 +15,14 @@
  */
 function config($name=null, $file='config') {
      if($name==null) {
-          return \hyyphp\lib\Config::getAll($file);
+          return \core\lib\Config::getAll($file);
      }else {
-          return \hyyphp\lib\Config::get($name, $file);
+          return \core\lib\Config::get($name, $file);
      }
 }
 
 function writeLog($filename, $msg, $type='error') {
-     $log = new \hyyphp\lib\Log();
+     $log = new \core\lib\Log();
      $log->writeLog($filename, $msg, $type);
 }
 
@@ -108,3 +108,21 @@ function http_post($url, $param, $timeOut = 5, $connectTimeOut = 5) {
           );
      }
 }
+
+/**
+ * [json description]
+ * @param  [type] $arr [description]
+ * @return [type]      [description]
+ */
+function json($arr = []) {
+    if(!$arr || !is_array($arr)) {
+        return false;
+    }
+    $data = json_encode($arr, JSON_UNESCAPED_UNICODE);
+    if (JSON_ERROR_NONE !== json_last_error()) {
+        throw new RuntimeException('Unable to parse response body into JSON: ' . json_last_error());
+    }
+
+    return $data === null ? array() : $data;
+}
+

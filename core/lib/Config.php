@@ -3,9 +3,9 @@
  * @Author: LongDH
  * @Date:   2017-11-05 22:06:36
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-09-28 20:05:36
+ * @Last Modified time: 2018-10-19 16:27:41
  */
-namespace hyyphp\lib;
+namespace core\lib;
 
 class Config {
      public static $conf = [];

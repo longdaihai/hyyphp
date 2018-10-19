@@ -4,9 +4,9 @@
  * @Author: LongDH
  * @Date:   2017-11-05 17:27:03
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-06 00:11:40
+ * @Last Modified time: 2018-10-19 16:28:07
  */
-namespace hyyphp\lib;
+namespace core\lib;
 
 use PDO;
 

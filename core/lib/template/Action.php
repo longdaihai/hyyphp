@@ -9,7 +9,7 @@
 // | Author: HanSheng <164897033@qq.com>
 // +----------------------------------------------------------------------
 
-namespace hyyphp\lib\template;
+namespace core\lib\template;
 
 class Action {
      //模板编译文件目录

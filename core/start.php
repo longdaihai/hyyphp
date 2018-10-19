@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2017~2018 http://www.haiyunyi.cn All rights reserved.
+// | Copyright (c) HanSheng All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -23,7 +23,7 @@ define('CORE_PATH', 'lib' . DS);
 define('COMMON_PATH', 'common' . DS);
 defined('DEBUG') or define('DEBUG', false);
 defined('APP_PATH') or define('APP_PATH', dirname($_SERVER['SCRIPT_FILENAME']) . DS);
-defined('MODULE') or define('MODULE', '/../app' . DS); //项目文件目录
+defined('MODULE') or define('MODULE', '/../application' . DS); //项目文件目录
 defined('ROOT_PATH') or define('ROOT_PATH', dirname(realpath(APP_PATH)) . DS);
 defined('EXTEND_PATH') or define('EXTEND_PATH', ROOT_PATH . 'extend' . DS);
 defined('VENDOR_PATH') or define('VENDOR_PATH', ROOT_PATH . 'vendor' . DS);
