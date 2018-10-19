@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-04 21:18:46
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-19 22:57:34
+ * @Last Modified time: 2018-10-19 23:01:46
  */
 
 /**
@@ -14,16 +14,16 @@
  * @return array
  */
 function config($name=null, $file='config') {
-     if($name==null) {
-          return \core\lib\Config::getAll($file);
-     }else {
-          return \core\lib\Config::get($name, $file);
-     }
+    if($name==null) {
+        return \core\lib\Config::getAll($file);
+    }else {
+        return \core\lib\Config::get($name, $file);
+    }
 }
 
 function writeLog($filename, $msg, $type='error') {
-     $log = new \core\lib\Log();
-     $log->writeLog($filename, $msg, $type);
+    $log = new \core\lib\Log();
+    $log->writeLog($filename, $msg, $type);
 }
 
 /**
@@ -33,32 +33,32 @@ function writeLog($filename, $msg, $type='error') {
  * @return string content
  */
 function http_get($url, $timeOut = 5, $connectTimeOut = 5) {
-     $oCurl = curl_init ();
-     if (stripos ( $url, "http://" ) !== FALSE || stripos ( $url, "https://" ) !== FALSE) {
-          curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYPEER, FALSE );
-          curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYHOST, FALSE );
-     }
-     curl_setopt($oCurl, CURLOPT_URL, $url );
-     curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
-     curl_setopt($oCurl, CURLOPT_TIMEOUT, $timeOut);
-     curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $connectTimeOut);
-     $sContent = curl_exec ( $oCurl );
-     $aStatus = curl_getinfo ( $oCurl );
-      $error = curl_error( $oCurl );
-     curl_close ( $oCurl );
-     if (intval ( $aStatus ["http_code"] ) == 200) {
-          return array(
-                    'status' => true,
-                    'content' => $sContent,
-                    'code' => $aStatus ["http_code"],
-          );
-     } else {
-          return array(
-                    'status' => false,
-                    'content' => json_encode(array("error" => $error, "url" => $url)),
-                    'code' => $aStatus ["http_code"],
-          );
-     }
+    $oCurl = curl_init ();
+    if (stripos ( $url, "http://" ) !== FALSE || stripos ( $url, "https://" ) !== FALSE) {
+        curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYPEER, FALSE );
+        curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYHOST, FALSE );
+    }
+    curl_setopt($oCurl, CURLOPT_URL, $url );
+    curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt($oCurl, CURLOPT_TIMEOUT, $timeOut);
+    curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $connectTimeOut);
+    $sContent = curl_exec ( $oCurl );
+    $aStatus = curl_getinfo ( $oCurl );
+    $error = curl_error( $oCurl );
+    curl_close ( $oCurl );
+    if (intval ( $aStatus ["http_code"] ) == 200) {
+        return array(
+            'status' => true,
+            'content' => $sContent,
+            'code' => $aStatus ["http_code"],
+        );
+    }else {
+        return array(
+            'status' => false,
+            'content' => json_encode(array("error" => $error, "url" => $url)),
+            'code' => $aStatus ["http_code"],
+        );
+    }
 }
 
 /**
@@ -101,7 +101,7 @@ function http_post($url, $param, $timeOut = 5, $connectTimeOut = 5) {
             'code' => $aStatus ["http_code"],
           );
     } else {
-        return array(
+        return array(1
             'status' => false,
             'content' => json_encode(array("error" => $error, "url" => $url)),
             'code' => $aStatus ["http_code"],
