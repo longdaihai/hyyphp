@@ -4,7 +4,7 @@
  * @Author: LongDH
  * @Date:   2017-11-04 21:18:46
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-19 23:01:46
+ * @Last Modified time: 2018-10-19 23:16:53
  */
 
 /**
@@ -101,7 +101,7 @@ function http_post($url, $param, $timeOut = 5, $connectTimeOut = 5) {
             'code' => $aStatus ["http_code"],
           );
     } else {
-        return array(1
+        return array(
             'status' => false,
             'content' => json_encode(array("error" => $error, "url" => $url)),
             'code' => $aStatus ["http_code"],

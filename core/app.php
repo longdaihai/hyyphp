@@ -81,8 +81,8 @@ class App {
                 self::$pams = array_values($url);
             }
         }else {
-            self::$controller = \hyyphp\lib\Config::get('default_controller');
-            self::$method = \hyyphp\lib\Config::get('default_function');
+            self::$controller = \core\lib\Config::get('default_controller');
+            self::$method = \core\lib\Config::get('default_function');
         }
     }
 
