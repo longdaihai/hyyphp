@@ -1,10 +1,13 @@
 <?php
-/**
- * 公共模型类（数据库）
- * @Author: LongDH
- * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-24 23:13:09
- */
+// +----------------------------------------------------------------------
+// | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
+// +----------------------------------------------------------------------
+// | Copyright (c) HanSheng All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: HanSheng <164897033@qq.com>
+// +----------------------------------------------------------------------
 namespace core\lib;
 
 use \PDO;
@@ -799,7 +802,7 @@ class Model {
             $link->beginTransaction();
         }
         self::$transTimes++;
-        return ;
+        return;
     }
 
     /**
