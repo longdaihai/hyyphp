@@ -3,14 +3,14 @@
  * @Author: LongDH
  * @Date:   2017-11-04 18:41:17
  * @Last Modified by:   LongDH
- * @Last Modified time: 2017-11-06 13:32:34
+ * @Last Modified time: 2018-10-30 14:42:35
  */
 
 // 项目目录
-define('APP_PATH', __DIR__ . '/../app/');
+define('APP_PATH', __DIR__ . '/../application/');
 
 // 项目模块
-define('MODULE', 'app');
+define('MODULE', 'application');
 
 define('DEBUG', true);
 

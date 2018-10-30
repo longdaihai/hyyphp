@@ -3,13 +3,13 @@
  * @Author: LongDH
  * @Date:   2017-11-04 18:56:37
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-09-28 20:57:20
+ * @Last Modified time: 2018-10-30 14:42:52
  */
-namespace app\controller;
+namespace application\controller;
 
 use hyyphp\lib\Controller;
 
-class BaseController extends Controller{
+class Base extends Controller{
 
      public function index() {
 

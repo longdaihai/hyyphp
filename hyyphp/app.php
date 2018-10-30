@@ -2,12 +2,14 @@
 // +----------------------------------------------------------------------
 // | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2017~2018 http://www.haiyunyi.cn All rights reserved.
+// | Copyright (c) HanSheng All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
 // | Author: HanSheng <164897033@qq.com>
 // +----------------------------------------------------------------------
+
+use hyyphp\lib\Config;
 
 class App {
     protected static $controller; //默认控制器
@@ -22,10 +24,10 @@ class App {
     public static function run() {
         self::parseUrl();
         //得到控制器的路径
-        $con_dir = APP_PATH . 'controller/' . self::$controller . 'Controller'.EXT;
-
-        $controller = '\\' . MODULE . '\\controller\\' .  self::$controller.'Controller';
-        // echo $con_dir;
+        $con_dir = APP_PATH . 'controller/' . self::$controller . EXT;
+        // echo APP_PATH; exit;
+        $controller = '\\' . MODULE . '\\controller\\' . self::$controller;
+        // echo $con_dir; exit;
         //判断控制器文件是否存在
         if (file_exists($con_dir)) {
             $c = new $controller;
@@ -50,6 +52,7 @@ class App {
      */
     protected static function parseUrl() {
         //判断是否传了URL
+        // print_r($_SERVER); exit;
         if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '/'){
             // 解析 /index/index
             $path = $_SERVER['REQUEST_URI'];
@@ -57,19 +60,26 @@ class App {
             // 过滤?之后的参数
             $path = preg_replace("/\?.*/", "", $path);
             $url = explode('/', trim($path, '/'));
-
-            //得到控制器名称
-            if (isset($url[0])) {
-                self::$controller = ucfirst($url[0]); //首字母大写
-                unset($url[0]);
-            }
-
-            //得到方法名
-            if (isset($url[1])) {
-                self::$method = $url[1];
-                unset($url[1]);
+            $pathInfo = hyyphp\lib\Config::get('PATH_INFO');
+            if($pathInfo == 1) {
+                //得到控制器名称
+                if (isset($url[0])) {
+                    self::$controller = ucfirst($url[0]); //首字母大写
+                    unset($url[0]);
+                }
+                //得到方法名
+                if (isset($url[1])) {
+                    self::$method = $url[1];
+                    unset($url[1]);
+                }else {
+                     self::$method = \hyyphp\lib\Config::get('default_function');
+                }
             }else {
-                 self::$method = \hyyphp\lib\Config::get('default_function');
+                //得到控制器名称
+                $controller = @$_GET['c'] ? $_GET['c'] : hyyphp\lib\Config::get('default_controller');
+                self::$controller = ucfirst($controller);
+                //得到方法名
+                self::$method = @$_GET['a'] ? $_GET['a'] : hyyphp\lib\Config::get('default_function');
             }
 
             //判断是否还其他的参数
@@ -77,8 +87,8 @@ class App {
                 self::$pams = array_values($url);
             }
         }else {
-            self::$controller = \hyyphp\lib\Config::get('default_controller');
-            self::$method = \hyyphp\lib\Config::get('default_function');
+            self::$controller = hyyphp\lib\Config::get('default_controller');
+            self::$method = hyyphp\lib\Config::get('default_function');
         }
     }
 
@@ -92,6 +102,7 @@ class App {
         if(isset(self::$classMap[$className])) {
             return true;
         }else {
+
             //类文件所在的目录
             $classFile = ROOT_PATH . $className . EXT;
             $classFile = str_replace('\\', '/', $classFile);
