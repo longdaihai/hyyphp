@@ -11,13 +11,13 @@
 namespace application\controller;
 
 use application\model\DemoModel;
+use QL\QueryList;
 
 class Index extends Base{
 
-     public function index() {
-          $demo = new DemoModel();
-          print_r($demo->demo());
-     }
+    public function index() {
+        echo 'index-index';
+    }
 
-     public function demo() {}
+    public function demo() {}
 }

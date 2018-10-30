@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: HanSheng <164897033@qq.com>
 // +----------------------------------------------------------------------
-namespace core\lib;
+namespace hyyphp\lib;
 
 use \PDO;
 
@@ -299,7 +299,7 @@ class Model {
      * @param string $table 数据表名
      * @return false | integer
      */
-    function add($data,$table) {
+    function add($table, $data) {
         //过滤提交数据
         $data=self::filterPost($table,$data);
         foreach ($data as $key=>$val){
@@ -333,7 +333,7 @@ class Model {
      * @param string $order
      * @return false | integer
      */
-    static function update($sets,$table,$where,$limit=0,$order='') {
+    static function update($table,$sets,$where,$limit=0,$order='') {
         $sets = self::filterPost($table,$sets);
         $sql = 'UPDATE '.$table.' SET '.self::parseSets($sets).self::parseWhere($where).self::parseOrder($order).self::parseLimit($limit);
         return self::execute($sql);
@@ -802,7 +802,7 @@ class Model {
             $link->beginTransaction();
         }
         self::$transTimes++;
-        return;
+        return ;
     }
 
     /**

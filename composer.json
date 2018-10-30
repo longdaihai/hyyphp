@@ -1,27 +1,35 @@
 {
-     "name": "hyyphp/hyyphp_core",
-     "description": "An open source free and simple PHP framework.",
-     "license": "MIT",
-     "homepage": "https://github.com/longdaihai/hyyphp",
-     "keywords": [
-          "php-router",
-          "php"
-     ],
-     "authors": [
-          {
-               "name": "LongDaihai",
-               "email": "164897033@qq.com",
-               "homepage": "http://www.haiyunyi.cn/"
-          }
-     ],
-     "require": {
-          "php": ">=5.4",
-          "monolog/monolog": "*"
-     },
-     "repositories": {
-         "packagist": {
-             "type": "composer",
-             "url": "https://packagist.phpcomposer.com"
-         }
-     }
+    "name": "hyyphp/hyyphp_core",
+    "description": "An open source free and simple PHP framework.",
+    "license": "MIT",
+    "homepage": "https://github.com/longdaihai/hyyphp",
+    "keywords": [
+        "php-router",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "HanShen",
+            "email": "164897033@qq.com",
+            "homepage": "http://www.haiyunyi.cn/"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "monolog/monolog": "*",
+        "jaeger/phpquery-single": "^0.9",
+        "tightenco/collect": "^5",
+        "jaeger/g-http": "^1.1"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "autoload":{
+        "psr-4":{
+            "QL\\":"src"
+        }
+    }
 }

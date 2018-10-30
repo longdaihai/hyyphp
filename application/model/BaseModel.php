@@ -3,10 +3,10 @@
  * @Author: LongDH
  * @Date:   2018-10-19 16:38:50
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-19 16:51:33
+ * @Last Modified time: 2018-10-30 14:43:08
  */
 namespace application\model;
 
-include_once realpath('../').'/commonTools/DB.php';
+use hyyphp\core\Model;
 
-class BaseModel extends DB {}
+class BaseModel extends Model {}

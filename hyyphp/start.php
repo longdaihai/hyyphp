@@ -19,18 +19,19 @@ define('HYYPHP_VERSION', '0.0.1-Beat');
 define('HYYPHP_START_TIME', microtime(true));
 define('HYYPHP_START_MEM', memory_get_usage());
 define('EXT', '.php');
-define('CORE_PATH', 'lib' . DS);
-define('COMMON_PATH', 'common' . DS);
 defined('DEBUG') or define('DEBUG', false);
+defined('HYY_PATH') or define('HYY_PATH', __DIR__ . DS);
+define('LIB_PATH', HYY_PATH . 'lib' . DS);
+define('COMMON_PATH', HYY_PATH . 'common' . DS);
+defined('CONF_PATH') or define('CONF_PATH', HYY_PATH . 'config' . DS); // 配置文件目录
 defined('APP_PATH') or define('APP_PATH', dirname($_SERVER['SCRIPT_FILENAME']) . DS);
-defined('MODULE') or define('MODULE', '/../application' . DS); //项目文件目录
 defined('ROOT_PATH') or define('ROOT_PATH', dirname(realpath(APP_PATH)) . DS);
 defined('EXTEND_PATH') or define('EXTEND_PATH', ROOT_PATH . 'extend' . DS);
 defined('VENDOR_PATH') or define('VENDOR_PATH', ROOT_PATH . 'vendor' . DS);
 defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);
 defined('LOG_PATH') or define('LOG_PATH', ROOT_PATH . 'logs' . DS);
 defined('CACHE_PATH') or define('CACHE_PATH', RUNTIME_PATH . 'cache' . DS);
-defined('CONF_PATH') or define('CONF_PATH', ROOT_PATH . 'config' . DS); // 配置文件目录
+
 /*
  * ------------------------------------------------------
  *  环境常量 Windows / Liunx
@@ -38,7 +39,7 @@ defined('CONF_PATH') or define('CONF_PATH', ROOT_PATH . 'config' . DS); // 配�
  */
 define('IS_CLI', PHP_SAPI == 'cli' ? true : false);
 define('IS_WIN', strpos(PHP_OS, 'WIN') !== false);
-
+// echo ROOT_PATH; exit;
 /*
  * ------------------------------------------------------
  *  载入Composer第三方库

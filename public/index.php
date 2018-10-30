@@ -3,7 +3,7 @@
  * @Author: LongDH
  * @Date:   2017-11-04 18:41:17
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-19 23:09:38
+ * @Last Modified time: 2018-10-30 14:42:35
  */
 
 // 项目目录
@@ -15,4 +15,4 @@ define('MODULE', 'application');
 define('DEBUG', true);
 
 // 引入核心框架文件
-require __DIR__ . '/../core/start.php';
+require __DIR__ . '/../hyyphp/start.php';
