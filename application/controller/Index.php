@@ -15,13 +15,14 @@ use model\DemoModel;
 class Index extends Base{
 
     public function index() {
-        echo 'index-index';
+        $this->fetch('index/index');
     }
 
     public function demo() {
         $demo = new DemoModel();
+        dump($demo->testDB());
 //        session('name', 'ldhsadas');
-        dump(session('name'));
+//        dump(session('name'));
 
     }
 }
