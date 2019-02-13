@@ -16,6 +16,7 @@ use QL\QueryList;
 class Index extends Base{
 
     public function index() {
+        dump(C()); exit;
         echo 'index-index';
     }
 

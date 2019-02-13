@@ -1,15 +1,15 @@
 <?php
 /**
  * @Author: LongDH
- * @Date:   2017-11-05 14:45:45
  * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-19 16:02:31
+ * @Last Modified time: 2018-11-01 13:54:40
  */
 namespace application\controller;
 
-class Test {
-     public function index() {
-          echo 'test--index';
+class Test extends Base{
+    public function index() {
+        $this -> fetch('index');
+        echo 'test--index';
 
-     }
+    }
 }
