@@ -1,13 +1,16 @@
 <?php
-/**
- * @Author: LongDH
- * @Date:   2017-11-04 18:56:37
- * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-30 14:42:52
- */
-namespace application\controller;
+// +----------------------------------------------------------------------
+// | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
+// +----------------------------------------------------------------------
+// | Copyright (c) HanSheng All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: HanSheng <164897033@qq.com>
+// +----------------------------------------------------------------------
+namespace controller;
 
-use hyyphp\lib\Controller;
+use hyyphp\Controller;
 
 class Base extends Controller{
 

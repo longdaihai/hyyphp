@@ -8,15 +8,13 @@
 // +----------------------------------------------------------------------
 // | Author: HanSheng <164897033@qq.com>
 // +----------------------------------------------------------------------
-namespace application\controller;
+namespace controller;
 
-use application\model\DemoModel;
-use QL\QueryList;
+use model\DemoModel;
 
 class Index extends Base{
 
     public function index() {
-        dump(C()); exit;
         echo 'index-index';
     }
 

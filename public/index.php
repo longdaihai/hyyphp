@@ -1,16 +1,16 @@
 <?php
-/**
- * @Author: LongDH
- * @Date:   2017-11-04 18:41:17
- * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-30 14:42:35
- */
+// +----------------------------------------------------------------------
+// | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
+// +----------------------------------------------------------------------
+// | Copyright (c) HanSheng All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: HanSheng <164897033@qq.com>
+// +----------------------------------------------------------------------
 
 // 项目目录
 define('APP_PATH', __DIR__ . '/../application/');
-
-// 项目模块
-define('MODULE', 'application');
 
 define('DEBUG', true);
 
