@@ -1,12 +1,15 @@
 <?php
-/**
- * @Author: LongDH
- * @Date:   2018-10-19 16:38:50
- * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-30 14:43:08
- */
-namespace application\model;
+// +----------------------------------------------------------------------
+// | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
+// +----------------------------------------------------------------------
+// | Copyright (c) HanSheng All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: HanSheng <164897033@qq.com>
+// +----------------------------------------------------------------------
+namespace model;
 
-use hyyphp\core\Model;
+use hyyphp\Model;
 
 class BaseModel extends Model {}

@@ -1,17 +1,22 @@
 <?php
-/**
- * @Author: LongDH
- * @Date:   2017-11-05 16:11:40
- * @Last Modified by:   LongDH
- * @Last Modified time: 2018-10-24 23:23:48
- */
-namespace application\model;
-
-use core\lib\Model;
+// +----------------------------------------------------------------------
+// | HYYPHP [ WE CAN DO IT JUST HYYPHP ]
+// +----------------------------------------------------------------------
+// | Copyright (c) HanSheng All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: HanSheng <164897033@qq.com>
+// +----------------------------------------------------------------------
+namespace model;
 
 class DemoModel extends BaseModel{
-     public function demo() {
-          $data = self::executeSQL('SELECT * FROM test', [], BD::DB_SELECT);
+
+    public function demo() {
+          $data = $this -> select('user', '*', [
+              'id[<]' => 1200
+          ]);
+          dump($this->last());
           return $data;
      }
 

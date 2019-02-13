@@ -18,5 +18,10 @@ class Index extends Base{
         echo 'index-index';
     }
 
-    public function demo() {}
+    public function demo() {
+        $demo = new DemoModel();
+//        session('name', 'ldhsadas');
+        dump(session('name'));
+
+    }
 }
